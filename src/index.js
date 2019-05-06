@@ -1,9 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Main from './components/main/main.jsx';
+import App from './components/app/app.jsx';
 
-ReactDOM.render(
-    <Main/>,
-    document.getElementById(`root`)
-);
+const init = () => {
+  const settings = {
+    movieNames: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`, `Aviator`],
+  };
+
+  ReactDOM.render(
+      <App
+        movieNames={settings.movieNames}
+      />,
+      document.getElementById(`root`)
+  );
+};
+
+init();
