@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Main from './main.jsx';
+import Main from './main';
 
 describe(`The application is displayed correctly.`, () => {
   it(`Main screen correctly renders after launch`, () => {
