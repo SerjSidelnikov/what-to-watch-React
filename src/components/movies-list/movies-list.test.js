@@ -1,14 +1,16 @@
 import renderer from 'react-test-renderer';
 
-import App from './app';
+import MoviesList from './movies-list';
 import films from '../../moks/films';
 
 describe(`The application is displayed correctly.`, () => {
-  it(`App correctly renders after launch`, () => {
+  it(`MoviesList screen correctly renders after launch`, () => {
+    const handleClick = jest.fn();
 
     const component = renderer.create(
-        <App
+        <MoviesList
           movies={films}
+          onClick={handleClick}
         />
     ).toJSON();
 
