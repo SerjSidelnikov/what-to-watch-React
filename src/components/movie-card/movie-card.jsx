@@ -1,7 +1,15 @@
-const FilmCard = ({title, src, onClick, onMouseEnter}) => {
+const MovieCard = ({title, src, onClick, onActiveMovie}) => {
   return (
-    <article className="small-movie-card catalog__movies-card" onMouseEnter={onMouseEnter}>
-      <button className="small-movie-card__play-btn" type="button">Play</button>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onMouseEnter={onActiveMovie}
+    >
+      <button
+        className="small-movie-card__play-btn"
+        type="button"
+        onClick={onActiveMovie}
+      >Play</button>
+
       <div className="small-movie-card__image">
         <img src={src} alt={title} width="280" height="175"/>
       </div>
@@ -16,11 +24,11 @@ const FilmCard = ({title, src, onClick, onMouseEnter}) => {
   );
 };
 
-FilmCard.propTypes = {
+MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
+  onActiveMovie: PropTypes.func.isRequired,
 };
 
-export default FilmCard;
+export default MovieCard;
