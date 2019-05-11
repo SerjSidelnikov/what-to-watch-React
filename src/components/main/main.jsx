@@ -1,7 +1,8 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
+import {Fragment} from 'react';
 
-const Main = ({movieNames, onClick}) => {
+import MoviesList from '../movies-list/movies-list';
+
+const Main = ({movies, onClick}) => {
   return (
     <Fragment>
       <div className="visually-hidden">
@@ -128,25 +129,10 @@ const Main = ({movieNames, onClick}) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {movieNames.map((name, index) =>
-              (
-                <article key={index} className="small-movie-card catalog__movies-card">
-                  <button className="small-movie-card__play-btn" type="button">Play</button>
-                  <div className="small-movie-card__image">
-                    <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175"/>
-                  </div>
-                  <h3 className="small-movie-card__title">
-                    <a
-                      className="small-movie-card__link"
-                      href="movie-page.html"
-                      onClick={onClick}
-                    >{name}</a>
-                  </h3>
-                </article>
-              )
-            )}
-          </div>
+          <MoviesList
+            movies={movies}
+            onClick={onClick}
+          />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -172,7 +158,7 @@ const Main = ({movieNames, onClick}) => {
 };
 
 Main.propTypes = {
-  movieNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  movies: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

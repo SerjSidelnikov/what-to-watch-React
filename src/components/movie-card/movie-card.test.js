@@ -1,16 +1,20 @@
 import renderer from 'react-test-renderer';
 
-import Main from './main';
+import MovieCard from './movie-card';
 import films from '../../moks/films';
 
 describe(`The application is displayed correctly.`, () => {
-  it(`Main screen correctly renders after launch`, () => {
+  it(`MovieCard screen correctly renders after launch`, () => {
     const handleClick = jest.fn();
+    const handleActiveMovie = jest.fn();
+    const {title, src} = films[0];
 
     const component = renderer.create(
-        <Main
-          movies={films}
+        <MovieCard
+          title={title}
+          src={src}
           onClick={handleClick}
+          onActiveMovie={handleActiveMovie}
         />
     ).toJSON();
 

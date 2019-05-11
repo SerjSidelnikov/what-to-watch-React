@@ -1,16 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
 import App from './components/app/app';
+import films from './moks/films';
 
 const init = () => {
-  const settings = {
-    movieNames: [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`, `Aviator`],
-  };
-
   ReactDOM.render(
       <App
-        movieNames={settings.movieNames}
+        movies={films}
       />,
       document.getElementById(`root`)
   );

@@ -1,3 +1,4 @@
+const webpack = require(`webpack`);
 const path = require(`path`);
 
 module.exports = {
@@ -11,6 +12,13 @@ module.exports = {
     compress: false,
     port: 1337,
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      'React': `react`,
+      'ReactDOM': `react-dom`,
+      'PropTypes': `prop-types`,
+    }),
+  ],
   module: {
     rules: [
       {

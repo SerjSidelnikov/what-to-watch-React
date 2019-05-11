@@ -1,23 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
 import Main from '../main/main.jsx';
 
 const handleClick = () => {};
 
 const App = (props) => {
-  const {movieNames} = props;
+  const {movies} = props;
 
   return (
     <Main
-      movieNames={movieNames}
+      movies={movies}
       onClick={handleClick}
     />
   );
 };
 
 App.propTypes = {
-  movieNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  movies: PropTypes.array.isRequired,
 };
 
 export default App;
