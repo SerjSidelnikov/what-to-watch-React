@@ -1,24 +1,20 @@
-import {Component} from 'react';
+import {PureComponent} from 'react';
 
 import MovieCard from '../movie-card/movie-card';
 
-class MoviesList extends Component {
+class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       activeMovie: null,
     };
-
-    this.handleActiveMovie.bind(this);
   }
 
   handleActiveMovie(movie) {
-    return () => {
-      this.setState({
-        activeMovie: movie,
-      });
-    };
+    this.setState({
+      activeMovie: movie,
+    });
   }
 
   render() {
@@ -32,7 +28,7 @@ class MoviesList extends Component {
             title={movie.title}
             src={movie.src}
             onClick={onClick}
-            onActiveMovie={this.handleActiveMovie(movie)}
+            onActiveMovie={this.handleActiveMovie.bind(this, movie)}
           />
         ))}
       </div>
