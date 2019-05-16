@@ -1,16 +1,24 @@
-import {PureComponent} from 'react';
+import {PureComponent, createRef} from 'react';
 
 class VideoPlayer extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._videoRef = React.createRef();
+    this._videoRef = createRef();
 
     this.state = {
       progress: 0,
       isLoading: true,
       isPlaying: props.isPlaying,
     };
+  }
+
+  render() {
+    return (
+      <video
+        ref={this._videoRef}
+      />
+    );
   }
 
   componentDidMount() {
@@ -57,14 +65,6 @@ class VideoPlayer extends PureComponent {
     video.onpause = null;
     video.ontimeupdate = null;
     video.src = ``;
-  }
-
-  render() {
-    return (
-      <video
-        ref={this._videoRef}
-      />
-    );
   }
 }
 

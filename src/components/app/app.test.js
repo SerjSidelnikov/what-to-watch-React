@@ -9,7 +9,12 @@ describe(`The application is displayed correctly.`, () => {
     const component = renderer.create(
         <App
           movies={films}
-        />
+        />,
+        {
+          createNodeMock: () => {
+            return {};
+          }
+        }
     ).toJSON();
 
     expect(component).toMatchSnapshot();

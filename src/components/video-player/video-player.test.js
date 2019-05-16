@@ -1,16 +1,18 @@
 import renderer from 'react-test-renderer';
 
-import MoviesList from './movies-list';
+import VideoPlayer from './video-player';
 import films from '../../moks/films';
 
 describe(`The application is displayed correctly.`, () => {
-  it(`MoviesList screen correctly renders after launch`, () => {
-    const handleClick = jest.fn();
+  it(`VideoPlayer correctly renders after launch`, () => {
+    const {src, poster} = films[0];
 
     const component = renderer.create(
-        <MoviesList
-          movies={films}
-          onClick={handleClick}
+        <VideoPlayer
+          src={src}
+          poster={poster}
+          muted={true}
+          isPlaying={false}
         />,
         {
           createNodeMock: () => {
