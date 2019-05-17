@@ -11,7 +11,12 @@ describe(`The application is displayed correctly.`, () => {
         <Main
           movies={films}
           onClick={handleClick}
-        />
+        />,
+        {
+          createNodeMock: () => {
+            return {};
+          }
+        }
     ).toJSON();
 
     expect(component).toMatchSnapshot();

@@ -1,21 +1,19 @@
 import {shallow, mount} from 'enzyme';
 
 import MovieCard from './movie-card';
-import MoviesList from '../movies-list/movies-list';
 import films from '../../moks/films';
 
 describe(`<MovieCard/>`, () => {
   const handleClick = jest.fn();
-  const handleActiveMovie = jest.fn();
-  const {title, src} = films[0];
+  const {title, src, poster} = films[0];
 
   it(`Simulates pressing the card title`, () => {
     const wrapper = shallow(
         <MovieCard
           title={title}
           src={src}
+          poster={poster}
           onClick={handleClick}
-          onActiveMovie={handleActiveMovie}
         />
     );
 
@@ -26,23 +24,50 @@ describe(`<MovieCard/>`, () => {
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it(`On click on a button, the correct information gets into the callback function: an active card with a movie.`, () => {
-    const cardList = mount(
-        <MoviesList
-          movies={films}
+  it(`When you hover the cursor on the card plays video.`, () => {
+    jest.useFakeTimers();
+
+    const movieCard = shallow(
+        <MovieCard
+          title={title}
+          src={src}
+          poster={poster}
           onClick={handleClick}
         />
     );
 
-    expect(cardList.state(`activeMovie`)).toEqual(null);
+    expect(movieCard.state(`isPlaying`)).toEqual(false);
 
-    const buttons = cardList.find(`.small-movie-card__play-btn`);
+    const card = movieCard.find(`.small-movie-card`);
 
-    buttons.forEach((btn, index) => {
-      btn.simulate(`click`);
-      cardList.update();
+    card.simulate(`mouseenter`);
 
-      expect(cardList.state(`activeMovie`)).toEqual(films[index]);
-    });
+    jest.advanceTimersByTime(1000);
+    movieCard.update();
+
+    expect(movieCard.state(`isPlaying`)).toEqual(true);
+    jest.useRealTimers();
+  });
+
+  it(`When you move the cursor from the card, the video stops.`, () => {
+    const movieCard = mount(
+        <MovieCard
+          title={title}
+          src={src}
+          poster={poster}
+          onClick={handleClick}
+        />
+    );
+
+    movieCard.setState({isPlaying: true});
+
+    expect(movieCard.state(`isPlaying`)).toEqual(true);
+
+    const card = movieCard.find(`.small-movie-card`);
+
+    card.simulate(`mouseleave`);
+    movieCard.update();
+
+    expect(movieCard.state(`isPlaying`)).toEqual(false);
   });
 });

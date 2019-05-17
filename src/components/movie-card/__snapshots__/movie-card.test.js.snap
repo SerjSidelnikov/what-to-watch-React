@@ -3,24 +3,13 @@
 exports[`The application is displayed correctly. MovieCard screen correctly renders after launch 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onMouseEnter={[MockFunction]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
 >
-  <button
-    className="small-movie-card__play-btn"
-    onClick={[MockFunction]}
-    type="button"
-  >
-    Play
-  </button>
   <div
     className="small-movie-card__image"
   >
-    <img
-      alt="Fantastic Beasts"
-      height="175"
-      src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-      width="280"
-    />
+    <video />
   </div>
   <h3
     className="small-movie-card__title"
