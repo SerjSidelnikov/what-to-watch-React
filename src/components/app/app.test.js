@@ -1,15 +1,18 @@
+import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
+import {createStore} from 'redux';
 
 import App from './app';
-import films from '../../moks/films';
+import {reducer} from '../../reducer/reducer';
 
 describe(`The application is displayed correctly.`, () => {
   it(`App correctly renders after launch`, () => {
+    const store = createStore(reducer);
 
     const component = renderer.create(
-        <App
-          movies={films}
-        />,
+        <Provider store={store}>
+          <App/>
+        </Provider>,
         {
           createNodeMock: () => {
             return {};

@@ -44,4 +44,7 @@ const reducer = (state = initialState, action) => {
 export {
   actionCreator,
   reducer,
+  CHANGE_GENRE_FILTER,
+  GET_FILTERED_MOVIES,
+  initialState,
 };
