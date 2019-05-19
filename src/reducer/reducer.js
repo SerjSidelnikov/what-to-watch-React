@@ -4,7 +4,7 @@ const CHANGE_GENRE_FILTER = `CHANGE_GENRE_FILTER`;
 const GET_FILTERED_MOVIES = `GET_FILTERED_MOVIES`;
 
 const initialState = {
-  genre: `all genres`,
+  genre: `All genres`,
   films,
 };
 
@@ -19,7 +19,7 @@ const actionCreator = {
 
     return {
       type: GET_FILTERED_MOVIES,
-      payload: (genre === `all genre`) ? initialState.films : filteredMovies,
+      payload: (genre === `All genres`) ? initialState.films : filteredMovies,
     };
   },
 };

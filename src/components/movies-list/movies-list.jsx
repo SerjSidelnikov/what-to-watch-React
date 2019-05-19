@@ -5,7 +5,7 @@ const MoviesList = ({movies, onClick}) => {
     <div className="catalog__movies-list">
       {movies.map((movie, index) => (
         <MovieCard
-          key={`movie-${index}`}
+          key={`${movie.title}-${index}`}
           title={movie.title}
           src={movie.src}
           poster={movie.poster}
