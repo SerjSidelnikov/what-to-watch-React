@@ -1,8 +1,9 @@
 import {Fragment} from 'react';
 
+import GenreList from '../genre-list/genre-list';
 import MoviesList from '../movies-list/movies-list';
 
-const Main = ({movies, onClick}) => {
+const Main = ({movies, genres, genre, onClick, onGenreChange}) => {
   return (
     <Fragment>
       <div className="visually-hidden">
@@ -96,38 +97,11 @@ const Main = ({movies, onClick}) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">All genres</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Comedies</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Crime</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Documentary</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Dramas</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Horror</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Kids & Family</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Romance</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Sci-Fi</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Thrillers</a>
-            </li>
-          </ul>
+          <GenreList
+            genres={genres}
+            activeGenre={genre}
+            onClick={onGenreChange}
+          />
 
           <MoviesList
             movies={movies}
@@ -159,7 +133,11 @@ const Main = ({movies, onClick}) => {
 
 Main.propTypes = {
   movies: PropTypes.array.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  genre: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  onGenreChange: PropTypes.func.isRequired,
 };
+
 
 export default Main;
