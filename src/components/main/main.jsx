@@ -1,11 +1,9 @@
-import {Fragment} from 'react';
-
 import GenreList from '../genre-list/genre-list';
 import MoviesList from '../movies-list/movies-list';
 
 const Main = ({movies, genres, genre, onClick, onGenreChange}) => {
   return (
-    <Fragment>
+    <>
       <div className="visually-hidden">
         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
           <symbol id="add" viewBox="0 0 19 20">
@@ -127,7 +125,7 @@ const Main = ({movies, genres, genre, onClick, onGenreChange}) => {
           </div>
         </footer>
       </div>
-    </Fragment>
+    </>
   );
 };
 

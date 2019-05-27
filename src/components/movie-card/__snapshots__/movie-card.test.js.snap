@@ -3,8 +3,6 @@
 exports[`The application is displayed correctly. MovieCard screen correctly renders after launch 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
   <div
     className="small-movie-card__image"

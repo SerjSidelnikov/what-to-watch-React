@@ -1,19 +1,24 @@
-import {shallow, mount} from 'enzyme';
+import {mount} from 'enzyme';
 
 import MovieCard from './movie-card';
 import films from '../../moks/films';
 
 describe(`<MovieCard/>`, () => {
   const handleClick = jest.fn();
+  const handleMouseEnter = jest.fn();
+  const handleMouseLeave = jest.fn();
   const {title, src, poster} = films[0];
 
   it(`Simulates pressing the card title`, () => {
-    const wrapper = shallow(
+    const wrapper = mount(
         <MovieCard
           title={title}
           src={src}
           poster={poster}
           onClick={handleClick}
+          isPlaying={true}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         />
     );
 
@@ -25,28 +30,23 @@ describe(`<MovieCard/>`, () => {
   });
 
   it(`When you hover the cursor on the card plays video.`, () => {
-    jest.useFakeTimers();
-
-    const movieCard = shallow(
+    const movieCard = mount(
         <MovieCard
           title={title}
           src={src}
           poster={poster}
           onClick={handleClick}
+          isPlaying={true}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         />
     );
-
-    expect(movieCard.state(`isPlaying`)).toEqual(false);
 
     const card = movieCard.find(`.small-movie-card`);
 
     card.simulate(`mouseenter`);
 
-    jest.advanceTimersByTime(1000);
-    movieCard.update();
-
-    expect(movieCard.state(`isPlaying`)).toEqual(true);
-    jest.useRealTimers();
+    expect(handleMouseEnter).toHaveBeenCalled();
   });
 
   it(`When you move the cursor from the card, the video stops.`, () => {
@@ -56,18 +56,16 @@ describe(`<MovieCard/>`, () => {
           src={src}
           poster={poster}
           onClick={handleClick}
+          isPlaying={false}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         />
     );
-
-    movieCard.setState({isPlaying: true});
-
-    expect(movieCard.state(`isPlaying`)).toEqual(true);
 
     const card = movieCard.find(`.small-movie-card`);
 
     card.simulate(`mouseleave`);
-    movieCard.update();
 
-    expect(movieCard.state(`isPlaying`)).toEqual(false);
+    expect(handleMouseLeave).toHaveBeenCalled();
   });
 });

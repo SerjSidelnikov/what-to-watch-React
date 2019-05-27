@@ -1,49 +1,21 @@
-import {PureComponent} from 'react';
 import {connect} from 'react-redux';
 
 import Main from '../main/main.jsx';
 import {actionCreator} from '../../reducer/reducer';
+import withGenre from '../../hocs/with-genres/with-genres';
+import withTitleClick from '../../hocs/with-title-click/with-title-click';
 
-class App extends PureComponent {
-  constructor(props) {
-    super(props);
+const MainWith = withTitleClick(withGenre(Main));
 
-    this.state = {
-      genres: [],
-    };
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick() {}
-
-  render() {
-    const {films, genre, onGenreChange} = this.props;
-    const {genres} = this.state;
-
-    return (
-      <Main
-        movies={films}
-        genres={genres}
-        genre={genre}
-        onClick={this.handleClick}
-        onGenreChange={onGenreChange}
-      />
-    );
-  }
-
-  _getGenres(films) {
-    const movieGenres = films.map((movie) => movie.genre);
-
-    this.setState({
-      genres: [...new Set(movieGenres)],
-    });
-  }
-
-  componentWillMount() {
-    this._getGenres(this.props.films);
-  }
-}
+const App = ({films, genre, onGenreChange}) => {
+  return (
+    <MainWith
+      movies={films}
+      genre={genre}
+      onGenreChange={onGenreChange}
+    />
+  );
+};
 
 App.propTypes = {
   films: PropTypes.array.isRequired,

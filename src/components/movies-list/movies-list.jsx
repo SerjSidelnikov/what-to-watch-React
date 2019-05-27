@@ -1,10 +1,13 @@
 import MovieCard from '../movie-card/movie-card';
+import withActiveCard from '../../hocs/with-active-card/with-active-card';
+
+const MovieCardWithActive = withActiveCard(MovieCard);
 
 const MoviesList = ({movies, onClick}) => {
   return (
     <div className="catalog__movies-list">
       {movies.map((movie, index) => (
-        <MovieCard
+        <MovieCardWithActive
           key={`${movie.title}-${index}`}
           title={movie.title}
           src={movie.src}
