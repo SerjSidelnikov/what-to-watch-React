@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import {createStore} from 'redux';
 
 import App from './app';
-import {reducer} from '../../reducer/reducer';
+import reducer from '../../reducer';
 
 describe(`The application is displayed correctly.`, () => {
   it(`App correctly renders after launch`, () => {

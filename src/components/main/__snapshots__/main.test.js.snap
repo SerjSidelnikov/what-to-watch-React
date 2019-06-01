@@ -273,17 +273,6 @@ Array [
         className="catalog__genres-list"
       >
         <li
-          className="catalog__genres-item catalog__genres-item--active"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            All genres
-          </a>
-        </li>
-        <li
           className="catalog__genres-item"
         >
           <a
@@ -359,9 +348,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[MockFunction]}
-            >
-              Fantastic Beasts
-            </a>
+            />
           </h3>
         </article>
         <article
@@ -381,9 +368,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[MockFunction]}
-            >
-              Bohemian Rhapsody
-            </a>
+            />
           </h3>
         </article>
         <article
@@ -403,9 +388,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[MockFunction]}
-            >
-              Macbeth
-            </a>
+            />
           </h3>
         </article>
         <article
@@ -425,9 +408,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[MockFunction]}
-            >
-              Aviator
-            </a>
+            />
           </h3>
         </article>
         <article
@@ -447,9 +428,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
               onClick={[MockFunction]}
-            >
-              We need to talk about Kevin
-            </a>
+            />
           </h3>
         </article>
       </div>
