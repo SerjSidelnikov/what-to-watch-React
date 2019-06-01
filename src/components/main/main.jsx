@@ -1,7 +1,7 @@
 import GenreList from '../genre-list/genre-list';
 import MoviesList from '../movies-list/movies-list';
 
-const Main = ({movies, genres, genre, onClick, onGenreChange}) => {
+const Main = ({movies, genres, activeGenre, onClick, onGenreChange}) => {
   return (
     <>
       <div className="visually-hidden">
@@ -97,7 +97,7 @@ const Main = ({movies, genres, genre, onClick, onGenreChange}) => {
 
           <GenreList
             genres={genres}
-            activeGenre={genre}
+            activeGenre={activeGenre}
             onClick={onGenreChange}
           />
 
@@ -132,7 +132,7 @@ const Main = ({movies, genres, genre, onClick, onGenreChange}) => {
 Main.propTypes = {
   movies: PropTypes.array.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  genre: PropTypes.string.isRequired,
+  activeGenre: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
 };

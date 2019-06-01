@@ -1,17 +1,18 @@
 import {connect} from 'react-redux';
 
 import Main from '../main/main.jsx';
-import {actionCreator} from '../../reducer/reducer';
-import withGenre from '../../hocs/with-genres/with-genres';
+import {actionCreator} from '../../reducer/data/data';
+import {getActiveGenre, getGenres, getFilteredFilms} from '../../reducer/data/selectors';
 import withTitleClick from '../../hocs/with-title-click/with-title-click';
 
-const MainWith = withTitleClick(withGenre(Main));
+const MainWith = withTitleClick(Main);
 
-const App = ({films, genre, onGenreChange}) => {
+const App = ({films, genres, activeGenre, onGenreChange}) => {
   return (
     <MainWith
       movies={films}
-      genre={genre}
+      genres={genres}
+      activeGenre={activeGenre}
       onGenreChange={onGenreChange}
     />
   );
@@ -19,21 +20,23 @@ const App = ({films, genre, onGenreChange}) => {
 
 App.propTypes = {
   films: PropTypes.array.isRequired,
-  genre: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  activeGenre: PropTypes.string.isRequired,
   onGenreChange: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => (
   Object.assign({}, ownProps, {
-    genre: state.genre,
-    films: state.films,
+    films: getFilteredFilms(state),
+    genres: getGenres(state),
+    activeGenre: getActiveGenre(state),
   })
 );
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreChange: (event, genre) => {
     event.preventDefault();
-    dispatch(actionCreator.changeGenreFilter(genre));
+    dispatch(actionCreator.changeActiveGenre(genre));
     dispatch(actionCreator.getFilteredMovies(genre));
   },
 });

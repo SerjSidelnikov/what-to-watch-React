@@ -6,12 +6,12 @@ const MovieCardWithActive = withActiveCard(MovieCard);
 const MoviesList = ({movies, onClick}) => {
   return (
     <div className="catalog__movies-list">
-      {movies.map((movie, index) => (
+      {movies.map((movie) => (
         <MovieCardWithActive
-          key={`${movie.title}-${index}`}
-          title={movie.title}
-          src={movie.src}
-          poster={movie.poster}
+          key={movie.id}
+          title={movie.name}
+          src={movie[`preview_video_link`]}
+          poster={movie[`poster_image`]}
           onClick={onClick}
         />
       ))}
@@ -21,9 +21,10 @@ const MoviesList = ({movies, onClick}) => {
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
+    'id': PropTypes.number.isRequired,
+    'name': PropTypes.string.isRequired,
+    'preview_video_link': PropTypes.string.isRequired,
+    'poster_image': PropTypes.string.isRequired,
   })).isRequired,
   onClick: PropTypes.func.isRequired,
 };
