@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Main from '../main/main.jsx';
 import {actionCreator} from '../../reducer/data/data';
 import {getActiveGenre, getGenres, getFilteredFilms} from '../../reducer/data/selectors';
+import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import withTitleClick from '../../hocs/with-title-click/with-title-click';
 
 const MainWith = withTitleClick(Main);
@@ -30,6 +31,7 @@ const mapStateToProps = (state, ownProps) => (
     films: getFilteredFilms(state),
     genres: getGenres(state),
     activeGenre: getActiveGenre(state),
+    isAuthorizationRequired: getAuthorizationStatus(state),
   })
 );
 
