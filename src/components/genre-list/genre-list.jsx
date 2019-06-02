@@ -1,14 +1,6 @@
 const GenreList = ({genres, activeGenre, onClick}) => {
   return (
     <ul className="catalog__genres-list">
-      <li className={`catalog__genres-item${(activeGenre === `All genres`) ? ` catalog__genres-item--active` : ``}`}>
-        <a
-          href="#"
-          className="catalog__genres-link"
-          onClick={(event) => onClick(event, `All genres`)}
-        >All genres</a>
-      </li>
-
       {genres.map((genre, index) => (
         <li
           key={`${genre}-${index}`}
