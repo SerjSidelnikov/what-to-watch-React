@@ -29,4 +29,9 @@ MoviesList.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
+MoviesList.defaultProps = {
+  movies: [{'id': 0, 'name': ``, 'preview_video_link': ``, 'poster_image': ``}],
+  onClick: () => {},
+};
+
 export default MoviesList;

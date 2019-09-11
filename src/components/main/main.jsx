@@ -137,5 +137,11 @@ Main.propTypes = {
   onGenreChange: PropTypes.func.isRequired,
 };
 
+Main.defaultProps = {
+  movies: [],
+  genres: [],
+  activeGenre: ``,
+  onGenreChange: () => {},
+};
 
 export default Main;
