@@ -75,4 +75,11 @@ VideoPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
 };
 
+VideoPlayer.defaultProps = {
+  src: ``,
+  poster: ``,
+  muted: true,
+  isPlaying: false,
+};
+
 export default VideoPlayer;

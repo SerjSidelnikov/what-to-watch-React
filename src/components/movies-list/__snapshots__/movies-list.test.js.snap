@@ -21,7 +21,9 @@ exports[`The application is displayed correctly. MoviesList screen correctly ren
         className="small-movie-card__link"
         href="movie-page.html"
         onClick={[MockFunction]}
-      />
+      >
+        Fantastic Beasts
+      </a>
     </h3>
   </article>
   <article
@@ -41,7 +43,9 @@ exports[`The application is displayed correctly. MoviesList screen correctly ren
         className="small-movie-card__link"
         href="movie-page.html"
         onClick={[MockFunction]}
-      />
+      >
+        Bohemian Rhapsody
+      </a>
     </h3>
   </article>
   <article
@@ -61,7 +65,9 @@ exports[`The application is displayed correctly. MoviesList screen correctly ren
         className="small-movie-card__link"
         href="movie-page.html"
         onClick={[MockFunction]}
-      />
+      >
+        Macbeth
+      </a>
     </h3>
   </article>
   <article
@@ -81,7 +87,9 @@ exports[`The application is displayed correctly. MoviesList screen correctly ren
         className="small-movie-card__link"
         href="movie-page.html"
         onClick={[MockFunction]}
-      />
+      >
+        Aviator
+      </a>
     </h3>
   </article>
   <article
@@ -101,7 +109,9 @@ exports[`The application is displayed correctly. MoviesList screen correctly ren
         className="small-movie-card__link"
         href="movie-page.html"
         onClick={[MockFunction]}
-      />
+      >
+        We need to talk about Kevin
+      </a>
     </h3>
   </article>
 </div>

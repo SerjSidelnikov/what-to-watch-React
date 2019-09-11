@@ -23,4 +23,10 @@ GenreList.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
+GenreList.defaultProps = {
+  genres: [],
+  activeGenre: ``,
+  onClick: () => {},
+};
+
 export default GenreList;

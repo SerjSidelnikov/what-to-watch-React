@@ -36,4 +36,14 @@ MovieCard.propTypes = {
   onMouseLeave: PropTypes.func.isRequired,
 };
 
+MovieCard.defaultProps = {
+  title: ``,
+  src: ``,
+  poster: ``,
+  onClick: () => {},
+  isPlaying: false,
+  onMouseEnter: () => {},
+  onMouseLeave: () => {},
+};
+
 export default MovieCard;
