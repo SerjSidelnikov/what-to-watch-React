@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
 import Main from '../main/main.jsx';
-import {actionCreator} from '../../reducer/data/data';
+import {ActionCreator} from '../../reducer/data/data';
 import {getActiveGenre, getGenres, getFilteredFilms} from '../../reducer/data/selectors';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 import withTitleClick from '../../hocs/with-title-click/with-title-click';
@@ -35,13 +35,9 @@ const mapStateToProps = (state, ownProps) => (
   })
 );
 
-const mapDispatchToProps = (dispatch) => ({
-  onGenreChange: (event, genre) => {
-    event.preventDefault();
-    dispatch(actionCreator.changeActiveGenre(genre));
-    dispatch(actionCreator.getFilteredMovies(genre));
-  },
-});
+const mapDispatchToProps = {
+  onGenreChange: ActionCreator.changeActiveGenre,
+};
 
 export {App};
 
