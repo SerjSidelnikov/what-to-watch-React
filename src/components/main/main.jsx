@@ -1,7 +1,7 @@
 import GenreList from '../genre-list/genre-list';
 import MoviesList from '../movies-list/movies-list';
 
-const Main = ({movies, genres, activeGenre, onClick, onGenreChange}) => {
+const Main = ({movies, genres, activeGenre, onClick, onGenreChange, userData}) => {
   return (
     <>
       <div className="visually-hidden">
@@ -53,9 +53,16 @@ const Main = ({movies, genres, activeGenre, onClick, onGenreChange}) => {
           </div>
 
           <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63"/>
-            </div>
+            {userData
+              ? (
+                <div className="user-block__avatar">
+                  <img src="img/avatar.jpg" alt={userData.name} width="63" height="63"/>
+                </div>
+              )
+              : (
+                <a href="sign-in.html" className="user-block__link">Sign in</a>
+              )
+            }
           </div>
         </header>
 
@@ -135,6 +142,12 @@ Main.propTypes = {
   activeGenre: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   onGenreChange: PropTypes.func.isRequired,
+  userData: PropTypes.shape({
+    'id': PropTypes.number,
+    'email': PropTypes.string,
+    'name': PropTypes.string,
+    'avatar_url': PropTypes.string,
+  }),
 };
 
 Main.defaultProps = {

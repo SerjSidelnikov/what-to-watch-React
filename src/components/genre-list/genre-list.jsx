@@ -9,7 +9,10 @@ const GenreList = ({genres, activeGenre, onClick}) => {
           <a
             href="#"
             className="catalog__genres-link"
-            onClick={(event) => onClick(event, genre)}
+            onClick={(event) => {
+              event.preventDefault();
+              onClick(genre);
+            }}
           >{genre}</a>
         </li>
       ))}
