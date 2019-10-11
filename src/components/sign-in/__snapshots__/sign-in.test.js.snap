@@ -12,7 +12,8 @@ exports[`SignInComponent should render component correctly. 1`] = `
     >
       <a
         className="logo__link"
-        href="main.html"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"
@@ -51,6 +52,7 @@ exports[`SignInComponent should render component correctly. 1`] = `
           className="sign-in__field"
         >
           <input
+            autoFocus={true}
             className="sign-in__input"
             id="user-email"
             name="user-email"
@@ -106,7 +108,8 @@ exports[`SignInComponent should render component correctly. 1`] = `
     >
       <a
         className="logo__link logo__link--light"
-        href="main.html"
+        href="/"
+        onClick={[Function]}
       >
         <span
           className="logo__letter logo__letter--1"

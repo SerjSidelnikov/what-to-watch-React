@@ -1,6 +1,7 @@
 import {Provider} from 'react-redux';
 import renderer from 'react-test-renderer';
 import {createStore} from 'redux';
+import {BrowserRouter} from 'react-router-dom';
 
 import App from './app';
 import reducer from '../../reducer';
@@ -11,7 +12,9 @@ describe(`The application is displayed correctly.`, () => {
 
     const component = renderer.create(
         <Provider store={store}>
-          <App/>
+          <BrowserRouter>
+            <App/>
+          </BrowserRouter>
         </Provider>,
         {
           createNodeMock: () => {
