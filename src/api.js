@@ -1,7 +1,11 @@
 import axios from 'axios';
-import {ActionCreator} from './reducer/user/user';
+import history from './history';
 
-export const createAPI = (dispatch) => {
+const serverErrors = {
+  accessForbidden: 403,
+};
+
+export const createAPI = () => {
   const api = axios.create({
     baseURL: `https://es31-server.appspot.com/wtw`,
     timeout: 5000,
@@ -10,8 +14,8 @@ export const createAPI = (dispatch) => {
 
   const onSuccess = (response) => response;
   const onFail = (err) => {
-    if (err.response.status === 403) {
-      dispatch(ActionCreator.requireAuthorization(true));
+    if (err.response.status === serverErrors.accessForbidden) {
+      history.push(`/login`);
     }
     return err;
   };

@@ -2,14 +2,16 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {compose} from 'recompose';
+import {Router} from 'react-router-dom';
 
 import App from './components/app/app';
 import reducer from './reducer';
 import {Operations} from './reducer/data/data';
 import {createAPI} from './api';
+import history from './history';
 
 const init = () => {
-  const api = createAPI((...args) => store.dispatch(...args));
+  const api = createAPI();
   const store = createStore(
       reducer,
       compose(
@@ -22,7 +24,9 @@ const init = () => {
 
   ReactDOM.render(
       <Provider store={store}>
-        <App/>
+        <Router history={history}>
+          <App/>
+        </Router>
       </Provider>,
       document.getElementById(`root`)
   );

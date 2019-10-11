@@ -1,4 +1,5 @@
 import renderer from 'react-test-renderer';
+import {BrowserRouter} from 'react-router-dom';
 
 import Main from './main';
 import films from '../../moks/films';
@@ -10,13 +11,15 @@ describe(`The application is displayed correctly.`, () => {
     const genres = films.map((movie) => movie.genre);
 
     const component = renderer.create(
-        <Main
-          movies={films}
-          genres={genres}
-          genre={`All genres`}
-          onClick={handleClick}
-          onGenreChange={onGenreChange}
-        />,
+        <BrowserRouter>
+          <Main
+            movies={films}
+            genres={genres}
+            genre={`All genres`}
+            onClick={handleClick}
+            onGenreChange={onGenreChange}
+          />
+        </BrowserRouter>,
         {
           createNodeMock: () => {
             return {};

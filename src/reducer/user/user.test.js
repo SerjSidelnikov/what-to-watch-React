@@ -4,6 +4,7 @@ describe(`user reducer`, () => {
   it(`Should return initial state by default`, () => {
     expect(reducer(undefined, {})).toEqual({
       isAuthorizationRequired: false,
+      data: null,
     });
   });
 

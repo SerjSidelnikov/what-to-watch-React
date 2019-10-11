@@ -9,6 +9,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, `public`), // eslint-disable-line
+    historyApiFallback: true,
     compress: false,
     port: 1337,
   },

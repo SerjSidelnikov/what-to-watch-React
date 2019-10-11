@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 import GenreList from '../genre-list/genre-list';
 import MoviesList from '../movies-list/movies-list';
 
@@ -60,7 +62,7 @@ const Main = ({movies, genres, activeGenre, onClick, onGenreChange, userData}) =
                 </div>
               )
               : (
-                <a href="sign-in.html" className="user-block__link">Sign in</a>
+                <Link to={`/login`} className="user-block__link">Sign in</Link>
               )
             }
           </div>

@@ -1,3 +1,5 @@
+import history from '../../history';
+
 const initialState = {
   isAuthorizationRequired: false,
   data: null,
@@ -31,6 +33,7 @@ const Operation = {
         if (response.status === 200) {
           dispatch(ActionCreator.requireAuthorization(true));
           dispatch(ActionCreator.getData(response.data));
+          history.push(`/`);
         }
       });
   },

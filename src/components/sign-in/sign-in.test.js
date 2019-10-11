@@ -1,15 +1,18 @@
 import renderer from 'react-test-renderer';
+import {BrowserRouter} from 'react-router-dom';
 
-import SignIn from './sign-in';
+import {SignIn} from './sign-in';
 
 describe(`SignInComponent`, () => {
   it(`should render component correctly.`, () => {
     const fun = jest.fn();
     const component = renderer.create(
-        <SignIn
-          handleSubmit={fun}
-          handleInput={fun}
-        />
+        <BrowserRouter>
+          <SignIn
+            handleSubmit={fun}
+            handleInput={fun}
+          />
+        </BrowserRouter>
     ).toJSON();
 
     expect(component).toMatchSnapshot();
