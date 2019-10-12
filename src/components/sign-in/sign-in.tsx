@@ -1,7 +1,12 @@
 import * as React from "react";
 import {Link} from 'react-router-dom';
 
-const SignIn = ({handleInput, handleSubmit}) => {
+interface Props {
+  handleInput: () => void,
+  handleSubmit: () => void,
+}
+
+const SignIn = ({handleInput, handleSubmit}: Props) => {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -70,11 +75,6 @@ const SignIn = ({handleInput, handleSubmit}) => {
       </footer>
     </div>
   );
-};
-
-SignIn.propTypes = {
-  handleInput: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
 };
 
 export {SignIn};

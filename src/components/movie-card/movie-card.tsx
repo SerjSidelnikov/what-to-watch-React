@@ -2,7 +2,17 @@ import * as React from "react";
 
 import VideoPlayer from '../video-player/video-player';
 
-const MovieCard = ({title, src, poster, onClick, isPlaying, onMouseEnter, onMouseLeave}) => {
+interface Props {
+  title: string,
+  src: string,
+  poster: string,
+  isPlaying: boolean,
+  onClick: () => void,
+  onMouseEnter: () => void,
+  onMouseLeave: () => void,
+}
+
+const MovieCard = ({title, src, poster, onClick, isPlaying, onMouseEnter, onMouseLeave}: Props) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
@@ -26,26 +36,6 @@ const MovieCard = ({title, src, poster, onClick, isPlaying, onMouseEnter, onMous
       </h3>
     </article>
   );
-};
-
-MovieCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
-};
-
-MovieCard.defaultProps = {
-  title: ``,
-  src: ``,
-  poster: ``,
-  onClick: () => {},
-  isPlaying: false,
-  onMouseEnter: () => {},
-  onMouseLeave: () => {},
 };
 
 export default MovieCard;

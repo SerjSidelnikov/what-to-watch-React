@@ -1,7 +1,21 @@
 import * as React from 'react';
+import {Subtract} from "utility-types";
+
+interface InjectedProps {
+  isPlaying: boolean,
+}
+
+interface State {
+  isPlaying: boolean,
+}
 
 const withActiveCard = (Component) => {
-  class WithActiveCard extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectedProps>;
+
+  class WithActiveCard extends React.PureComponent<T, State> {
+    private _timer: number;
+
     constructor(props) {
       super(props);
 
@@ -14,7 +28,7 @@ const withActiveCard = (Component) => {
     }
 
     handleMouseEnter() {
-      this._timer = setTimeout(() => {
+      this._timer = window.setTimeout(() => {
         this.setState({isPlaying: true});
       }, 1000);
     }

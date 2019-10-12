@@ -1,5 +1,5 @@
 import * as React from "react";
-import renderer from 'react-test-renderer';
+import * as renderer from 'react-test-renderer';
 
 import MovieCard from './movie-card';
 import films from '../../moks/films';
@@ -14,7 +14,10 @@ describe(`The application is displayed correctly.`, () => {
           title={title}
           src={src}
           poster={poster}
+          isPlaying={false}
           onClick={handleClick}
+          onMouseEnter={handleClick}
+          onMouseLeave={handleClick}
         />,
         {
           createNodeMock: () => {

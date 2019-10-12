@@ -3,8 +3,18 @@ import {Link} from 'react-router-dom';
 
 import GenreList from '../genre-list/genre-list';
 import MoviesList from '../movies-list/movies-list';
+import {Film, accountData} from "../../types";
 
-const Main = ({movies, genres, activeGenre, onClick, onGenreChange, userData}) => {
+interface Props {
+  movies: Film[],
+  genres: string[],
+  activeGenre: string,
+  onClick: () => void,
+  onGenreChange: () => void,
+  userData: accountData,
+}
+
+const Main = ({movies, genres, activeGenre, onClick, onGenreChange, userData}: Props) => {
   return (
     <>
       <div className="visually-hidden">
@@ -137,27 +147,6 @@ const Main = ({movies, genres, activeGenre, onClick, onGenreChange, userData}) =
       </div>
     </>
   );
-};
-
-Main.propTypes = {
-  movies: PropTypes.array.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  activeGenre: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  onGenreChange: PropTypes.func.isRequired,
-  userData: PropTypes.shape({
-    'id': PropTypes.number,
-    'email': PropTypes.string,
-    'name': PropTypes.string,
-    'avatar_url': PropTypes.string,
-  }),
-};
-
-Main.defaultProps = {
-  movies: [],
-  genres: [],
-  activeGenre: ``,
-  onGenreChange: () => {},
 };
 
 export default Main;

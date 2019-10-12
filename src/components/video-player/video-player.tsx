@@ -1,6 +1,21 @@
 import * as React from 'react';
 
-class VideoPlayer extends React.PureComponent {
+interface Props {
+  src: string,
+  poster: string,
+  muted: boolean,
+  isPlaying: boolean,
+}
+
+interface State {
+  progress: number,
+  isLoading: boolean,
+  isPlaying: boolean,
+}
+
+class VideoPlayer extends React.PureComponent<Props, State> {
+  protected _videoRef: React.RefObject<HTMLVideoElement>;
+
   constructor(props) {
     super(props);
 
@@ -67,19 +82,5 @@ class VideoPlayer extends React.PureComponent {
     video.src = ``;
   }
 }
-
-VideoPlayer.propTypes = {
-  src: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
-  muted: PropTypes.bool.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-};
-
-VideoPlayer.defaultProps = {
-  src: ``,
-  poster: ``,
-  muted: true,
-  isPlaying: false,
-};
 
 export default VideoPlayer;
