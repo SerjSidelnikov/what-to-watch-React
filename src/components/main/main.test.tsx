@@ -1,4 +1,5 @@
-import renderer from 'react-test-renderer';
+import * as React from "react";
+import * as renderer from 'react-test-renderer';
 import {BrowserRouter} from 'react-router-dom';
 
 import Main from './main';
@@ -9,15 +10,22 @@ describe(`The application is displayed correctly.`, () => {
     const handleClick = jest.fn();
     const onGenreChange = jest.fn();
     const genres = films.map((movie) => movie.genre);
+    const userData = {
+      id: 1,
+      email: `string`,
+      name: `string`,
+      avatar_url: `string`,
+    };
 
     const component = renderer.create(
         <BrowserRouter>
           <Main
             movies={films}
             genres={genres}
-            genre={`All genres`}
+            activeGenre={`All genres`}
             onClick={handleClick}
             onGenreChange={onGenreChange}
+            userData={userData}
           />
         </BrowserRouter>,
         {

@@ -1,4 +1,8 @@
-import {mount} from 'enzyme';
+import * as React from "react";
+import {mount, configure} from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
+
+configure({adapter: new Adapter()});
 
 import MovieCard from './movie-card';
 import films from '../../moks/films';

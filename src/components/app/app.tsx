@@ -1,3 +1,4 @@
+import * as React from "react";
 import {connect} from 'react-redux';
 import {Switch, Route} from 'react-router-dom';
 
@@ -14,11 +15,22 @@ import withTitleClick from '../../hocs/with-title-click/with-title-click';
 import withFormData from '../../hocs/with-form-data/with-form-data';
 import withPrivateRoute from '../../hocs/with-private-route/with-private-route';
 
+import {Film, accountData, SignInData} from "../../types";
+
 const MainWith = withTitleClick(Main);
 const SignInWith = withFormData(SignIn);
 const MyListWith = withPrivateRoute(MyList);
 
-const App = ({films, genres, activeGenre, onGenreChange, userData, onSignInSubmit}) => {
+interface Props {
+  films: Film[],
+  genres: string[],
+  activeGenre: string,
+  userData: accountData,
+  onGenreChange: () => void,
+  onSignInSubmit: (data: SignInData) => void,
+}
+
+const App = ({films, genres, activeGenre, onGenreChange, userData, onSignInSubmit}: Props) => {
 
   return (
     <Switch>
@@ -36,20 +48,6 @@ const App = ({films, genres, activeGenre, onGenreChange, userData, onSignInSubmi
       <Route path={`/my-list`} component={MyListWith}/>
     </Switch>
   );
-};
-
-App.propTypes = {
-  films: PropTypes.array.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  activeGenre: PropTypes.string.isRequired,
-  onGenreChange: PropTypes.func.isRequired,
-  onSignInSubmit: PropTypes.func.isRequired,
-  userData: PropTypes.shape({
-    'id': PropTypes.number,
-    'email': PropTypes.string,
-    'name': PropTypes.string,
-    'avatar_url': PropTypes.string,
-  }),
 };
 
 const mapStateToProps = (state, ownProps) => (

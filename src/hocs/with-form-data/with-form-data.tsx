@@ -1,7 +1,21 @@
-import {PureComponent} from 'react';
+import * as React from 'react';
+import {Subtract} from "utility-types";
+import {SignInData} from "../../types";
+
+interface InjectedProps {
+  handleInput: () => void,
+  handleSubmit: () => void,
+}
+
+interface State {
+  data: SignInData,
+}
 
 const withFormData = (Component) => {
-  class WithFormData extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectedProps>;
+
+  class WithFormData extends React.PureComponent<T, State> {
     constructor(props) {
       super(props);
 
@@ -41,10 +55,6 @@ const withFormData = (Component) => {
       this.props.onSubmit(this.state.data);
     }
   }
-
-  WithFormData.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-  };
 
   return WithFormData;
 };

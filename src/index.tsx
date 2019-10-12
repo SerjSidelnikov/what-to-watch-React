@@ -1,3 +1,5 @@
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
@@ -10,13 +12,15 @@ import {Operations} from './reducer/data/data';
 import {createAPI} from './api';
 import history from './history';
 
+declare const __REDUX_DEVTOOLS_EXTENSION__: () => any;
+
 const init = () => {
   const api = createAPI();
   const store = createStore(
       reducer,
       compose(
           applyMiddleware(thunk.withExtraArgument(api)),
-          window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+          __REDUX_DEVTOOLS_EXTENSION__ && __REDUX_DEVTOOLS_EXTENSION__()
       )
   );
 

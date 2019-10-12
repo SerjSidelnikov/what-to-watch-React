@@ -1,7 +1,15 @@
-import {PureComponent} from 'react';
+import * as React from 'react';
+import {Subtract} from "utility-types";
+
+interface InjectedProps {
+  handleClick: () => void,
+}
 
 const withTitleClick = (Component) => {
-  class WithTitleClick extends PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectedProps>;
+
+  class WithTitleClick extends React.PureComponent<T, null> {
     constructor(props) {
       super(props);
       this.handleClick = this.handleClick.bind(this);
