@@ -1,3 +1,5 @@
+import * as React from "react";
+
 import VideoPlayer from '../video-player/video-player';
 
 const MovieCard = ({title, src, poster, onClick, isPlaying, onMouseEnter, onMouseLeave}) => {

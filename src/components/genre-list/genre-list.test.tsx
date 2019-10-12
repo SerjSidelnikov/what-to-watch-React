@@ -1,22 +1,20 @@
+import * as React from "react";
 import renderer from 'react-test-renderer';
 
-import MoviesList from './movies-list';
+import GenreList from './genre-list';
 import films from '../../moks/films';
 
 describe(`The application is displayed correctly.`, () => {
-  it(`MoviesList screen correctly renders after launch`, () => {
+  it(`GenreList screen correctly renders after launch`, () => {
     const handleClick = jest.fn();
+    const genres = films.map((movie) => movie.genre);
 
     const component = renderer.create(
-        <MoviesList
-          movies={films}
+        <GenreList
+          genres={genres}
+          activeGenre={`All genres`}
           onClick={handleClick}
-        />,
-        {
-          createNodeMock: () => {
-            return {};
-          }
-        }
+        />
     ).toJSON();
 
     expect(component).toMatchSnapshot();

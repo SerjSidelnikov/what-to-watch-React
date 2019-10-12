@@ -1,10 +1,10 @@
-import {PureComponent, createRef} from 'react';
+import * as React from 'react';
 
-class VideoPlayer extends PureComponent {
+class VideoPlayer extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this._videoRef = createRef();
+    this._videoRef = React.createRef();
 
     this.state = {
       progress: 0,

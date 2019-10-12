@@ -1,7 +1,7 @@
-import {PureComponent} from 'react';
+import * as React from 'react';
 
 const withTitleClick = (Component) => {
-  class WithTitleClick extends PureComponent {
+  class WithTitleClick extends React.PureComponent {
     constructor(props) {
       super(props);
       this.handleClick = this.handleClick.bind(this);

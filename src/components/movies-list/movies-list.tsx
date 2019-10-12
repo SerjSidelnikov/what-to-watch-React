@@ -1,3 +1,5 @@
+import * as React from "react";
+
 import MovieCard from '../movie-card/movie-card';
 import withActiveCard from '../../hocs/with-active-card/with-active-card';
 

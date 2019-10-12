@@ -1,3 +1,5 @@
+import * as React from "react";
+
 const GenreList = ({genres, activeGenre, onClick}) => {
   return (
     <ul className="catalog__genres-list">

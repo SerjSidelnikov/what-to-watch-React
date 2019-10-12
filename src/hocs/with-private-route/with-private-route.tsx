@@ -1,10 +1,10 @@
-import {PureComponent} from 'react';
+import * as React from 'react';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getAuthorizationStatus} from '../../reducer/user/selectors';
 
 const withPrivateRoute = (Component) => {
-  class WithPrivateRoute extends PureComponent {
+  class WithPrivateRoute extends React.PureComponent {
     constructor(props) {
       super(props);
     }

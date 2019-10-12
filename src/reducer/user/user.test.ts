@@ -1,4 +1,4 @@
-import {reducer} from './user.js';
+import {reducer} from './user';
 
 describe(`user reducer`, () => {
   it(`Should return initial state by default`, () => {
